@@ -3,5 +3,5 @@
 </h2>
 
 - ### [Hướng dẫn cài đặt VueJS](./Install-VueJS/)
-- ### [Lab 01: Thực hành VueJS cơ bản](./Install-VueJS/)
+- ### [Lab 01: Thực hành VueJS cơ bản](../src/components/vuejs_base/)
 
