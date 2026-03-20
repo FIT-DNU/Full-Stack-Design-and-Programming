@@ -1,59 +1,77 @@
-# HƯỚNG DẪN CÀI ĐẶT MÔI TRƯỜNG VUEJS
+# HƯỚNG DẪN CÀI ĐẶT MÔI TRƯỜNG PHÁT TRIỂN VUEJS (VITE)
 
-Tài liệu này hướng dẫn chi tiết cách thiết lập môi trường phát triển **VueJS** sử dụng **NodeJS và Vite** để tạo project mới.
+Tài liệu này hướng dẫn sinh viên thiết lập môi trường phát triển **VueJS hiện đại** sử dụng **NodeJS và Vite** để tạo và chạy ứng dụng frontend.
+
+Mục tiêu sau khi hoàn thành:
+
+* Cài đặt thành công NodeJS và npm
+* Tạo được Vue project bằng Vite
+* Hiểu cấu trúc project Vue cơ bản
+* Chạy được dev server và bắt đầu phát triển component
 
 ---
 
-## 1. Cài đặt NodeJS
+## 1. Yêu cầu trước khi bắt đầu (Prerequisites)
 
-VueJS cần môi trường runtime là **NodeJS**, vì vậy đây là bước bắt buộc trước khi tạo project.
+Sinh viên cần đảm bảo:
 
-### Các bước thực hiện:
+* Biết sử dụng Terminal / Command Prompt cơ bản
+* Đã cài Git
+* Đã cài VS Code hoặc IDE tương đương
+* Hiểu khái niệm package manager (npm)
 
-1. Truy cập trang tải NodeJS:
+---
 
-```
+## 2. Cài đặt NodeJS
+
+VueJS cần runtime là **NodeJS** để quản lý package và chạy dev server.
+
+### Bước 1: Tải NodeJS
+
+Truy cập:
+
+```text
 https://nodejs.org/en/download
 ```
 
-2. Chọn phiên bản:
+Chọn phiên bản:
 
 * Khuyến nghị: **LTS (Long Term Support)**
-* Không nên chọn phiên bản Current nếu chưa có kinh nghiệm.
-
-3. Mở file cài đặt và nhấn:
-
-```
-Next → Next → Finish
-```
-
-Giữ nguyên cấu hình mặc định.
+* Không nên dùng bản Current trong môi trường học tập / đồ án.
 
 ---
 
-## 2. Kiểm tra cài đặt NodeJS và npm
+### Bước 2: Kiểm tra cài đặt
 
-Sau khi cài đặt, mở **Terminal / Command Prompt** và chạy:
+Mở Terminal và chạy:
 
 ```bash
 node -v
-```
-
-Nếu hiển thị version (ví dụ `v20.x.x`) → cài đặt thành công.
-
-Tiếp tục kiểm tra npm:
-
-```bash
 npm -v
 ```
 
+Nếu hiển thị version → cài đặt thành công.
+
 ---
 
-## 3. Tạo project VueJS bằng Vite
+## 3. Tạo Vue Project bằng Vite
 
-Hiện nay Vue khuyến nghị sử dụng **Vite** vì tốc độ nhanh và cấu hình nhẹ.
+### Vì sao dùng Vite thay Vue CLI?
 
-Chạy lệnh sau:
+Vue CLI đang dần ít được sử dụng trong các project mới.
+
+Vite được chọn vì:
+
+* Dev server khởi động cực nhanh (ES Module native)
+* Hot Module Replacement gần như tức thời
+* Cấu hình tối giản
+* Build production sử dụng Rollup → bundle tối ưu
+
+---
+
+### Tạo project
+
+Chạy lệnh:
 
 ```bash
 npm create vue@latest
@@ -65,15 +83,14 @@ Hoặc:
 npm create vite@latest
 ```
 
-### Khi CLI hỏi:
+Sau đó chọn:
 
-* Nhập tên project
-* Chọn framework: **Vue**
-* Chọn TypeScript nếu cần
+* Framework: Vue
+* Variant: JavaScript hoặc TypeScript
 
 ---
 
-## 4. Cài dependencies và chạy project
+## 4. Cài đặt dependencies và chạy dev server
 
 Di chuyển vào thư mục project:
 
@@ -81,46 +98,132 @@ Di chuyển vào thư mục project:
 cd ten-project
 ```
 
-Cài các thư viện cần thiết:
+Cài thư viện:
 
 ```bash
 npm install
 ```
 
-Chạy server phát triển:
+Chạy project:
 
 ```bash
 npm run dev
 ```
 
-Mở trình duyệt tại:
+Dev server mặc định chạy tại:
 
-```
+```text
 http://localhost:5173
 ```
 
-Nếu thấy giao diện Vue → môi trường đã setup thành công.
+---
+
+## 5. Cấu trúc Project Vue cơ bản
+
+Sau khi tạo project, thư mục quan trọng gồm:
+
+```
+src/
+ ├── assets/        # static files (image, css global)
+ ├── components/    # reusable Vue components
+ ├── App.vue        # root component
+ ├── main.js        # entry point ứng dụng
+```
+
+### Vai trò các file chính
+
+* **main.js**
+
+  * Khởi tạo Vue App
+  * Mount vào DOM (`#app`)
+
+* **App.vue**
+
+  * Component gốc
+  * Chứa layout tổng thể
+
+* **components/**
+
+  * Nơi tạo các UI component độc lập
+
+---
+
+## 6. Workflow phát triển frontend cơ bản với Vue
+
+Quy trình làm bài tập hoặc đồ án:
+
+1. Tạo component mới trong `components/`
+
+Ví dụ:
+
+```
+HelloWorld.vue
+```
+
+2. Import vào `App.vue`
+
+```javascript
+import HelloWorld from './components/HelloWorld.vue'
+```
+
+3. Sử dụng component trong template
+
+```html
+<HelloWorld />
+```
+
+4. Dev server tự reload → kiểm tra trên browser
+
+---
+
+## 7. Build project để deploy
+
+Khi hoàn thành:
+
+```bash
+npm run build
+```
+
+Output nằm trong:
+
+```
+dist/
+```
+
+Thư mục này có thể deploy lên:
+
+* Nginx
+* Netlify
+* Vercel
+* ASP.NET Static hosting
 
 ---
 
 ## Các lỗi thường gặp và Cách khắc phục
 
-### 1. Không nhận lệnh node hoặc npm
+### 1. Không nhận lệnh node / npm
 
-**Nguyên nhân:** NodeJS chưa được thêm vào biến môi trường PATH hoặc terminal chưa được khởi động lại.
+Nguyên nhân:
 
-**Cách sửa:**
+* PATH chưa update
+* Terminal chưa restart
 
-* Đóng và mở lại Terminal
-* Hoặc restart máy
+Cách sửa:
+
+* Đóng mở lại terminal
+* Restart máy
 
 ---
 
-### 2. Port bị trùng
+### 2. Port đã được sử dụng
 
-**Thông báo:** *Address already in use*
+Thông báo:
 
-**Cách sửa:** Chạy project với port khác:
+```
+Address already in use
+```
+
+Cách sửa:
 
 ```bash
 npm run dev -- --port 3000
@@ -128,13 +231,15 @@ npm run dev -- --port 3000
 
 ---
 
-### 3. Lỗi thiếu dependencies
+### 3. Lỗi thiếu package
 
-**Thông báo:** *Cannot find module*
+Thông báo:
 
-**Nguyên nhân:** Chưa chạy `npm install`.
+```
+Cannot find module
+```
 
-**Cách sửa:**
+Cách sửa:
 
 ```bash
 npm install
@@ -142,4 +247,11 @@ npm install
 
 ---
 
-> **Mẹo nhỏ:** Luôn sử dụng phiên bản **NodeJS LTS ổn định** để tránh lỗi tương thích khi cài Vue hoặc các thư viện frontend khác.
+> **Mẹo kỹ thuật:** Luôn commit project ngay sau khi tạo bằng Git để dễ rollback khi lỗi dependency hoặc config.
+
+---
+
+Nếu bạn muốn, mình có thể viết tiếp cực mạnh phần:
+
+🔥 **“Vue Routing + State Management + API call + Structure đồ án chuẩn năm 3”**
+→ cái này mới là phần làm sinh viên học frontend thật sự.
