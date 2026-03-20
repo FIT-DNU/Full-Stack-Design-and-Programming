@@ -1,39 +1,47 @@
-# Hướng dẫn cài đặt môi trường VueJS
+# HƯỚNG DẪN CÀI ĐẶT MÔI TRƯỜNG VUEJS
 
-Tài liệu này hướng dẫn cách cài đặt môi trường cần thiết để bắt đầu phát triển ứng dụng bằng **VueJS**.
+Tài liệu này hướng dẫn chi tiết cách thiết lập môi trường phát triển **VueJS** sử dụng **NodeJS và Vite** để tạo project mới.
+
+---
 
 ## 1. Cài đặt NodeJS
 
-VueJS chạy trên môi trường JavaScript runtime là **NodeJS**, vì vậy đây là bước bắt buộc đầu tiên.
+VueJS cần môi trường runtime là **NodeJS**, vì vậy đây là bước bắt buộc trước khi tạo project.
 
-### Bước 1: Tải NodeJS
+### Các bước thực hiện:
 
-Truy cập trang chính thức:
+1. Truy cập trang tải NodeJS:
 
-👉 [https://nodejs.org/en/download](https://nodejs.org/en/download)
+```
+https://nodejs.org/en/download
+```
 
-Chọn phiên bản:
+2. Chọn phiên bản:
 
 * Khuyến nghị: **LTS (Long Term Support)**
-* Không nên chọn phiên bản Current nếu chưa có kinh nghiệm
+* Không nên chọn phiên bản Current nếu chưa có kinh nghiệm.
 
-### Bước 2: Cài đặt
+3. Mở file cài đặt và nhấn:
 
-* Mở file vừa tải về
-* Nhấn **Next → Next → Finish** theo mặc định
-* Không cần thay đổi cấu hình nếu chưa hiểu rõ
+```
+Next → Next → Finish
+```
 
-### Bước 3: Kiểm tra cài đặt
+Giữ nguyên cấu hình mặc định.
 
-Mở Terminal / Command Prompt và chạy:
+---
+
+## 2. Kiểm tra cài đặt NodeJS và npm
+
+Sau khi cài đặt, mở **Terminal / Command Prompt** và chạy:
 
 ```bash
 node -v
 ```
 
-Nếu hiển thị version (ví dụ: `v20.11.0`) → cài đặt thành công.
+Nếu hiển thị version (ví dụ `v20.x.x`) → cài đặt thành công.
 
-Kiểm tra thêm npm:
+Tiếp tục kiểm tra npm:
 
 ```bash
 npm -v
@@ -41,13 +49,11 @@ npm -v
 
 ---
 
-## 2. Cài Vue CLI hoặc Vite (Khuyến nghị dùng Vite)
+## 3. Tạo project VueJS bằng Vite
 
-Hiện nay VueJS khuyến nghị dùng **Vite** để tạo project vì nhanh và nhẹ hơn Vue CLI.
+Hiện nay Vue khuyến nghị sử dụng **Vite** vì tốc độ nhanh và cấu hình nhẹ.
 
-### Tạo project Vue bằng Vite
-
-Chạy lệnh:
+Chạy lệnh sau:
 
 ```bash
 npm create vue@latest
@@ -59,7 +65,7 @@ Hoặc:
 npm create vite@latest
 ```
 
-Sau đó:
+### Khi CLI hỏi:
 
 * Nhập tên project
 * Chọn framework: **Vue**
@@ -67,7 +73,7 @@ Sau đó:
 
 ---
 
-## 3. Chạy project Vue
+## 4. Cài dependencies và chạy project
 
 Di chuyển vào thư mục project:
 
@@ -75,13 +81,13 @@ Di chuyển vào thư mục project:
 cd ten-project
 ```
 
-Cài dependencies:
+Cài các thư viện cần thiết:
 
 ```bash
 npm install
 ```
 
-Chạy server:
+Chạy server phát triển:
 
 ```bash
 npm run dev
@@ -97,22 +103,43 @@ Nếu thấy giao diện Vue → môi trường đã setup thành công.
 
 ---
 
-## 4. Một số lỗi thường gặp
+## Các lỗi thường gặp và Cách khắc phục
 
-### Không nhận lệnh node / npm
+### 1. Không nhận lệnh node hoặc npm
 
-Nguyên nhân: chưa add vào PATH hoặc chưa restart terminal.
+**Nguyên nhân:** NodeJS chưa được thêm vào biến môi trường PATH hoặc terminal chưa được khởi động lại.
 
-Cách xử lý:
+**Cách sửa:**
 
-* Đóng và mở lại terminal
+* Đóng và mở lại Terminal
 * Hoặc restart máy
 
-### Port bị trùng
+---
 
-Có thể đổi port:
+### 2. Port bị trùng
+
+**Thông báo:** *Address already in use*
+
+**Cách sửa:** Chạy project với port khác:
 
 ```bash
 npm run dev -- --port 3000
 ```
 
+---
+
+### 3. Lỗi thiếu dependencies
+
+**Thông báo:** *Cannot find module*
+
+**Nguyên nhân:** Chưa chạy `npm install`.
+
+**Cách sửa:**
+
+```bash
+npm install
+```
+
+---
+
+> **Mẹo nhỏ:** Luôn sử dụng phiên bản **NodeJS LTS ổn định** để tránh lỗi tương thích khi cài Vue hoặc các thư viện frontend khác.
