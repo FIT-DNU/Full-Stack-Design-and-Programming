@@ -248,10 +248,3 @@ npm install
 ---
 
 > **Mẹo kỹ thuật:** Luôn commit project ngay sau khi tạo bằng Git để dễ rollback khi lỗi dependency hoặc config.
-
----
-
-Nếu bạn muốn, mình có thể viết tiếp cực mạnh phần:
-
-🔥 **“Vue Routing + State Management + API call + Structure đồ án chuẩn năm 3”**
-→ cái này mới là phần làm sinh viên học frontend thật sự.
